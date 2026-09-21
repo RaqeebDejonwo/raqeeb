@@ -1,4 +1,28 @@
-<h1>My Angular Application</h1>
 
-<p>{{ firstVariable }}</p>
-<p>{{ secondVariable }}</p>
+@for(movie of movies;track movie.title){
+  <h1>{{movie.title }}</h1>
+  <p>Year: {{movie.year}}</p>
+  <p>genre: {{movie.genre}}</p>
+  <p>directors: {{movie.directors}}</p>
+  <p>Cast: {{ movie.cast }}</p>
+  @if(movie.rating){
+    <p>rating: {{movie.rating}}</p>
+  }
+  @switch (movie.genre) {
+    @case ('Action') {
+ <p>this is an action movie</p>
+    }
+    @case ('Comedy') {
+ <p>this is a comedy movie</p>
+    }
+    @case ('Horror') {
+    <p>this is a horror movie</p>
+    }
+  }
+}
+@empty {
+  <p>No movies available</p>
+}
+<div id="Sentenial Value">
+
+</div>
