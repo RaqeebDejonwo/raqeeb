@@ -9,4 +9,6 @@ import { RouterOutlet } from '@angular/router';
 })
 export class App {
   protected readonly title = signal('untitled');
+  firstVariable: string = 'hello matthew';
+  secondVariable: number = 31;
 }
