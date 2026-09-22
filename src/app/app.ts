@@ -4,7 +4,7 @@ import { RouterOutlet } from '@angular/router';
 import { Movie } from './movie';
 
 @Component({
-  imports: [RouterOutlet],
+
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',
@@ -15,7 +15,7 @@ export class App {
   firstVariable: string = 'hello matthew';
   secondVariable: number = 31;
 
-  movies: Movie<string[]>[] = [
+  movies: Movie[] = [
     {
       title: 'invincible',
       year: 2021,
@@ -69,3 +69,5 @@ export class App {
     },
   ];
 }
+
+``
