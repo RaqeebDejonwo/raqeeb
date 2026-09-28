@@ -1,7 +1,10 @@
 <h1>Movie List</h1>
 
-@for (movie of movies; track movie.title) {
-  <app-movie-list-item [item]="movie"></app-movie-list-item>
+@for (movie of movies; track movie.id) {
+  <app-movie-list-item
+    [item]="movie"
+    (movieEvent)="handleMovieEvent($event)">
+  </app-movie-list-item>
 } @empty {
   <p>No movies available.</p>
 }
