@@ -1,9 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { Movie } from '../movie';
 
 @Component({
-  imports: [],
   selector: 'app-movie-list-item',
-  styleUrl: './movie-list-item.css',
+  imports: [],
   templateUrl: './movie-list-item.html',
+  styleUrl: './movie-list-item.css',
 })
-export class MovieListItem {}
+export class MovieListItem {
+  item = input.required<Movie>();
+}

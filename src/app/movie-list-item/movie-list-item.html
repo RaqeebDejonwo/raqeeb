@@ -1,1 +1,31 @@
-<p>movie-list-item works!</p>
+<div class="movie-item">
+  <h2>{{ item().title }}</h2>
+
+  <p>Year: {{ item().year }}</p>
+  <p>Director: {{ item().directors }}</p>
+  <p>Cast: {{ item().cast }}</p>
+
+  @switch (item().genre) {
+    @case ('Action') {
+      <p>Genre: Action Movie</p>
+    }
+    @case ('Comedy') {
+      <p>Genre: Comedy Movie</p>
+    }
+    @case ('Horror') {
+      <p>Genre: Horror Movie</p>
+    }
+    @case ('Drama') {
+      <p>Genre: Drama Movie</p>
+    }
+    @default {
+      <p>Genre: Other</p>
+    }
+  }
+
+  @if (item().rating) {
+    <p>Rating: {{ item().rating }}/10</p>
+  } @else {
+    <p>Rating is not available.</p>
+  }
+</div>
