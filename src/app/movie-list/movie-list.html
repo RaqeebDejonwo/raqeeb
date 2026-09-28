@@ -1,10 +1,32 @@
 <h1>Movie List</h1>
 
-@for (movie of movies; track movie.id) {
-  <app-movie-list-item
-    [item]="movie"
-    (movieEvent)="handleMovieEvent($event)">
-  </app-movie-list-item>
+@for (
+  movie of movies;
+  track movie.id;
+  let even = $even;
+  let odd = $odd;
+  let first = $first;
+  let last = $last;
+  let count = $count
+  ) {
+  @if (first) {
+    <h2>Showing {{ count }} movies</h2>
+  }
+
+  <div
+    [class.even]="even"
+    [class.odd]="odd"
+    [class.last]="last">
+
+    @if (first) {
+      <p class="first-label">First Movie</p>
+    }
+
+    <app-movie-list-item
+      [item]="movie"
+      (movieEvent)="handleMovieEvent($event)">
+    </app-movie-list-item>
+  </div>
 } @empty {
   <p>No movies available.</p>
 }

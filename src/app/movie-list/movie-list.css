@@ -1,0 +1,19 @@
+.even {
+  background-color: lightblue;
+}
+
+.odd {
+  background-color: lightgray;
+}
+
+.first-label {
+  background-color: darkblue;
+  color: white;
+  display: inline-block;
+  padding: 5px 10px;
+  font-weight: bold;
+}
+
+.last {
+  border-bottom: 6px solid darkblue;
+}
