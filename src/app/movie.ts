@@ -2,8 +2,9 @@ export interface Movie {
   id: number;
   title: string;
   year: number;
-  genre: 'Action' | 'Comedy' | 'Horror' | 'Drama';
-  rating?: number;
+  genre: string;
   directors: string[];
   cast: string[];
+  rating?: number;
+  image: string;
 }

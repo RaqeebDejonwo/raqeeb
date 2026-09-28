@@ -21,6 +21,7 @@ export class MovieList {
       directors: ['Robert Kirkman'],
       cast: ['Mark Grayson', 'Omni-Man'],
       rating: 8.7,
+      image: '/images/invincible.jpeg',
     },
     {
       id: 2,
@@ -30,6 +31,7 @@ export class MovieList {
       directors: ['April Blair'],
       cast: ['Spencer James', 'Olivia Baker'],
       rating: 7.6,
+      image: '/images/all-american.jpeg',
     },
     {
       id: 3,
@@ -39,6 +41,7 @@ export class MovieList {
       directors: ['John Singleton'],
       cast: ['Franklin Saint', 'Leon Simmons'],
       rating: 8.4,
+      image: '/images/snowfall.jpeg',
     },
     {
       id:4,
@@ -48,6 +51,7 @@ export class MovieList {
       directors: ['Courtney Kemp'],
       cast: ['Ghost', 'Tariq'],
       rating: 8.1,
+      image: '/images/powers.jpeg',
     },
     {
       id: 5,
@@ -57,6 +61,7 @@ export class MovieList {
       directors: ['Aaron Korsh'],
       cast: ['Harvey Specter', 'Mike Ross'],
       rating: 8.4,
+      image: '/images/suits.jpeg',
     },
     {
       id: 6,
@@ -66,6 +71,7 @@ export class MovieList {
       directors: ['Christopher Nolan'],
       cast: ['Batman', 'Joker'],
       rating: 9.0,
+      image: '/images/dark-knight.jpeg',
     },
   ];
   handleMovieEvent(event: MovieEvent) {
