@@ -8,6 +8,14 @@
   }
 </ul>
 
+<h2>High-Rated Action Movies</h2>
+
+<ul>
+  @for (movie of highRatedActionMovies(); track movie.id) {
+    <li>{{ movie.title }} - {{ movie.rating }}/10</li>
+  }
+</ul>
+
 <h2>All Movies</h2>
 
 @for (movie of movies(); track movie.id) {
