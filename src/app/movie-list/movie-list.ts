@@ -17,6 +17,7 @@ export class MovieList {
   movies = this.movieService.movieList;
   actionMovies = this.movieService.actionMovies;
   highRatedActionMovies = this.movieService.highRatedActionMovies;
+  movieSummary = this.movieService.movieSummary;
 
   handleMovieEvent(event: MovieEvent): void {
     console.log('Movie ID:', event.id);

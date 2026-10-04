@@ -78,6 +78,10 @@ export class MovieService {
     )
   );
 
+  movieSummary = computed(() =>
+    'There are ' + this.movieList().length + ' movies in the collection.'
+  );
+
   constructor() {
     effect(() => {
       console.log('Movie count is now:', this.movieList().length);
