@@ -15,6 +15,7 @@ export class MovieList {
   private movieService = inject(MovieService);
 
   movies = this.movieService.movieList;
+  actionMovies = this.movieService.actionMovies;
 
   handleMovieEvent(event: MovieEvent): void {
     console.log('Movie ID:', event.id);
