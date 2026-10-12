@@ -1,10 +1,17 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
-import { provideRouter } from '@angular/router';
-import { routes } from './app.routes';
+
+import { ApplicationConfig } from '@angular/core';
+import { APP_CONFIG } from './config/app.config.token';
+import { MovieService } from './services/movie';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideBrowserGlobalErrorListeners(),
-    provideRouter(routes)
+    MovieService,
+    {
+      provide: APP_CONFIG,
+      useValue: {
+        apiBaseUrl: 'https://placeholder.example.com/api',
+        defaultCategory: 'Action'
+      }
+    }
   ]
 };

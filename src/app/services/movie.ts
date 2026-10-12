@@ -1,8 +1,13 @@
-import { computed, effect, Service, signal } from '@angular/core';
-import { Movie } from '../movie';
 
-@Service()
+import { computed, effect, inject, Injectable, signal } from '@angular/core';
+import { Movie } from '../movie';
+import { APP_CONFIG } from '../config/app.config.token';
+
+@Injectable()
 export class MovieService {
+
+  private config = inject(APP_CONFIG);
+
   private movies = signal<Movie[]>([
     {
       id: 1,
@@ -69,7 +74,9 @@ export class MovieService {
   movieList = this.movies.asReadonly();
 
   actionMovies = computed(() =>
-    this.movieList().filter(movie => movie.genre === 'Action')
+    this.movieList().filter(
+      movie => movie.genre === this.config.defaultCategory
+    )
   );
 
   highRatedActionMovies = computed(() =>
