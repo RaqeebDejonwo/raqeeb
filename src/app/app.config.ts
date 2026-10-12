@@ -13,6 +13,10 @@ export const appConfig: ApplicationConfig = {
         defaultCategory: 'Action'
       }
     },
+
+    // To switch back to the real MovieService,
+    // remove the useClass provider below
+    // and register MovieService directly.
     {
       provide: MovieService,
       useClass: MockMovieService
