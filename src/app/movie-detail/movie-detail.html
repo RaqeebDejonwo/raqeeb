@@ -1,0 +1,16 @@
+
+@if (movie(); as selectedMovie) {
+  <h1>{{ selectedMovie.title }}</h1>
+
+  <p>Year: {{ selectedMovie.year }}</p>
+  <p>Genre: {{ selectedMovie.genre }}</p>
+  <p>Directors: {{ selectedMovie.directors }}</p>
+  <p>Cast: {{ selectedMovie.cast }}</p>
+  <p>Rating: {{ selectedMovie.rating }}</p>
+
+  <img [src]="selectedMovie.image"
+       [alt]="selectedMovie.title"
+       width="200">
+} @else {
+  <p>Movie not found.</p>
+}
