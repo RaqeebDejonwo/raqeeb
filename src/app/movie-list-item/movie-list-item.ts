@@ -1,4 +1,6 @@
+
 import { Component, input, output } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { Movie } from '../movie';
 
 export interface MovieEvent {
@@ -8,7 +10,7 @@ export interface MovieEvent {
 
 @Component({
   selector: 'app-movie-list-item',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './movie-list-item.html',
   styleUrl: './movie-list-item.css',
 })

@@ -1,3 +1,4 @@
+
 <div class="movie-item">
   <img [src]="item().image" [alt]="item().title">
 
@@ -31,5 +32,5 @@
     <p>Rating is not available.</p>
   }
 
-  <button (click)="openMovie()">Open Movie</button>
+  <a [routerLink]="['/movies', item().id]">Open Movie</a>
 </div>

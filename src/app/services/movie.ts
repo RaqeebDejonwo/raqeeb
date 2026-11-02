@@ -96,7 +96,7 @@ export class MovieService {
   }
 
   addMovie(newMovie: Movie): void {
-    const duplicateMovie = this.movieList().some(
+    const duplicateMovie: boolean = this.movieList().some(
       movie => movie.id === newMovie.id
     );
 
@@ -106,5 +106,17 @@ export class MovieService {
     }
 
     this.movies.update(list => [...list, newMovie]);
+  }
+
+  getMovieById(id: number): Movie | undefined {
+    return this.movieList().find(movie => movie.id === id);
+  }
+
+  updateMovie(updatedMovie: Movie): void {
+    this.movies.update(list =>
+      list.map(movie =>
+        movie.id === updatedMovie.id ? updatedMovie : movie
+      )
+    );
   }
 }

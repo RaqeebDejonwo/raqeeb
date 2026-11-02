@@ -1,0 +1,35 @@
+
+<h1>{{ isEditMode ? 'Edit Movie' : 'Add New Movie' }}</h1>
+
+<form [formGroup]="movieForm" (ngSubmit)="addMovie()">
+
+  <label>Movie Title:</label>
+  <input type="text" formControlName="title">
+
+  <br><br>
+
+  <label>Year:</label>
+  <input type="number" formControlName="year">
+
+  <br><br>
+
+  <label>Genre:</label>
+  <input type="text" formControlName="genre">
+
+  <br><br>
+
+  <label>Director:</label>
+  <input type="text" formControlName="directors">
+
+  <br><br>
+
+  <label>Rating:</label>
+  <input type="number" formControlName="rating">
+
+  <br><br>
+
+  <button type="submit" [disabled]="movieForm.invalid">
+    {{ isEditMode ? 'Update Movie' : 'Add Movie' }}
+  </button>
+
+</form>
