@@ -1,6 +1,6 @@
 
 import { computed, effect, inject, Injectable, signal } from '@angular/core';
-import { Movie } from '../movie';
+import { Movie, TVMazeShow } from '../movie';
 import { APP_CONFIG } from '../config/app.config.token';
 
 @Injectable()
@@ -119,4 +119,18 @@ export class MovieService {
       )
     );
   }
+
+  convertTVMazeShow(show: TVMazeShow): Movie {
+    return {
+      id: show.id,
+      title: show.name,
+      year: show.premiered ? Number(show.premiered.substring(0, 4)) : 0,
+      genre: show.genres[0] || 'Unknown',
+      directors: [],
+      cast: [],
+      rating: show.rating.average ?? 0,
+      image: show.image?.medium || ''
+    };
+  }
+
 }
