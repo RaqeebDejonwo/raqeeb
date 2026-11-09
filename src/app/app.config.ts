@@ -7,10 +7,17 @@ import { routes } from './app.routes';
 import { APP_CONFIG } from './config/app.config.token';
 import { MovieService } from './services/movie';
 import { loadingInterceptor } from './interceptors/loading.interceptor';
+import { errorInterceptor } from './interceptors/error.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideHttpClient(withInterceptors([loadingInterceptor])),
+    // Loading tracks requests and error catches failures.
+    // finalize() runs even if the request fails,
+    // so the loading counter is reset.
+    provideHttpClient(withInterceptors([
+      loadingInterceptor,
+      errorInterceptor
+    ])),
 
     provideRouter(routes, withComponentInputBinding()),
 

@@ -7,4 +7,14 @@
   }
 </nav>
 
+@if (errorService.errorMessage()) {
+  <div class="error-banner">
+    <p>{{ errorService.errorMessage() }}</p>
+
+    <button type="button" (click)="errorService.clearError()">
+      Dismiss
+    </button>
+  </div>
+}
+
 <router-outlet></router-outlet>

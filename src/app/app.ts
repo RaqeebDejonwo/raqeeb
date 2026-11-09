@@ -2,6 +2,7 @@
 import { Component, inject } from '@angular/core';
 import { RouterOutlet, RouterLink } from '@angular/router';
 import { LoadingService } from './services/loading';
+import { ErrorService } from './services/error';
 
 @Component({
   selector: 'app-root',
@@ -11,4 +12,5 @@ import { LoadingService } from './services/loading';
 })
 export class App {
   loadingService = inject(LoadingService);
+  errorService = inject(ErrorService);
 }
