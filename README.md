@@ -57,3 +57,19 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## API
+
+API Name: TVMaze API
+
+API Documentation:
+https://www.tvmaze.com/api
+
+Example Request URL:
+https://api.tvmaze.com/shows?page=0
+
+This project uses the TVMaze API to retrieve TV show information.
+
+The API is free, uses HTTPS, returns JSON data, and does not require an API key for this endpoint.
+
+The API returns information such as show ID, name, genres, rating, and image.git add README.md
+
