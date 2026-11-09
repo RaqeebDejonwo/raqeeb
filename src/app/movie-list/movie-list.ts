@@ -1,5 +1,6 @@
 
 import { Component, inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import {
   MovieEvent,
   MovieListItem
@@ -8,7 +9,7 @@ import { MovieService } from '../services/movie';
 
 @Component({
   selector: 'app-movie-list',
-  imports: [MovieListItem],
+  imports: [MovieListItem, RouterLink],
   templateUrl: './movie-list.html',
   styleUrl: './movie-list.css',
 })
@@ -26,5 +27,9 @@ export class MovieList {
   handleMovieEvent(event: MovieEvent): void {
     console.log('Movie ID:', event.id);
     console.log('Action:', event.action);
+
+    if (event.action === 'delete') {
+      this.movieService.deleteMovie(event.id);
+    }
   }
 }

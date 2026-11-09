@@ -73,3 +73,15 @@ The API is free, uses HTTPS, returns JSON data, and does not require an API key 
 
 The API returns information such as show ID, name, genres, rating, and image.git add README.md
 
+## Local Movie Changes
+
+Movies are loaded from the TVMaze API.
+
+Users can add, edit, and delete movies locally.
+
+These changes are stored only in the application's memory.
+
+Refreshing the page reloads the original movies from the API.
+
+No POST, PUT, PATCH, or DELETE requests are sent to TVMaze.
+

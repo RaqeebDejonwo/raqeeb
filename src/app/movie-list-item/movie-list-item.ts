@@ -5,7 +5,7 @@ import { Movie } from '../movie';
 
 export interface MovieEvent {
   id: number;
-  action: 'opened' | 'favourited';
+  action: 'opened' | 'favourited' | 'delete';
 }
 
 @Component({
@@ -22,6 +22,13 @@ export class MovieListItem {
     this.movieEvent.emit({
       id: this.item().id,
       action: 'opened',
+    });
+  }
+
+  deleteMovie() {
+    this.movieEvent.emit({
+      id: this.item().id,
+      action: 'delete',
     });
   }
 }

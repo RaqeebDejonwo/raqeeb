@@ -128,6 +128,14 @@ export class MovieService {
     );
   }
 
+
+  deleteMovie(id: number): void {
+    this.movies.update(list =>
+      list.filter(movie => movie.id !== id)
+    );
+  }
+
+
   convertTVMazeShow(show: TVMazeShow): Movie {
     return {
       id: show.id,

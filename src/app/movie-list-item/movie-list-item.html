@@ -41,4 +41,10 @@
   <a [routerLink]="['/movies', item().id, 'edit']">
     <button type="button">Edit Movie</button>
   </a>
+
+  <br>
+
+  <button type="button" (click)="deleteMovie()">
+    Delete Movie
+  </button>
 </div>
