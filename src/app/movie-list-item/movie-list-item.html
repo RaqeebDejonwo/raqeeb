@@ -32,5 +32,13 @@
     <p>Rating is not available.</p>
   }
 
-  <a [routerLink]="['/movies', item().id]">Open Movie</a>
+  <a [routerLink]="['/movies', item().id]">
+    Open Movie
+  </a>
+
+  <br>
+
+  <a [routerLink]="['/movies', item().id, 'edit']">
+    <button type="button">Edit Movie</button>
+  </a>
 </div>
