@@ -1,5 +1,13 @@
 <h1>Movie List</h1>
 
+@if (isLoading()) {
+  <p>Loading movies...</p>
+}
+
+@if (error()) {
+  <p>{{ error() }}</p>
+}
+
 <p>{{ movieSummary() }}</p>
 
 <h2>Action Movies</h2>

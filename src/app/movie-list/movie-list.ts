@@ -1,3 +1,4 @@
+
 import { Component, inject } from '@angular/core';
 import {
   MovieEvent,
@@ -18,6 +19,9 @@ export class MovieList {
   actionMovies = this.movieService.actionMovies;
   highRatedActionMovies = this.movieService.highRatedActionMovies;
   movieSummary = this.movieService.movieSummary;
+
+  isLoading = this.movieService.isLoading;
+  error = this.movieService.error;
 
   handleMovieEvent(event: MovieEvent): void {
     console.log('Movie ID:', event.id);

@@ -1,5 +1,6 @@
 
 import { computed, effect, inject, Injectable, signal } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Movie, TVMazeShow } from '../movie';
 import { APP_CONFIG } from '../config/app.config.token';
 
@@ -7,7 +8,7 @@ import { APP_CONFIG } from '../config/app.config.token';
 export class MovieService {
 
   private config = inject(APP_CONFIG);
-
+  private http = inject(HttpClient);
   private movies = signal<Movie[]>([
     {
       id: 1,
@@ -73,6 +74,9 @@ export class MovieService {
 
   movieList = this.movies.asReadonly();
 
+  isLoading = signal(false);
+  error = signal<string | null>(null);
+
   actionMovies = computed(() =>
     this.movieList().filter(
       movie => movie.genre === this.config.defaultCategory
@@ -89,11 +93,15 @@ export class MovieService {
     'There are ' + this.movieList().length + ' movies in the collection.'
   );
 
+
   constructor() {
     effect(() => {
       console.log('Movie count is now:', this.movieList().length);
     });
+
+    this.loadMovies();
   }
+
 
   addMovie(newMovie: Movie): void {
     const duplicateMovie: boolean = this.movieList().some(
@@ -132,5 +140,26 @@ export class MovieService {
       image: show.image?.medium || ''
     };
   }
+
+
+  loadMovies(): void {
+    this.isLoading.set(true);
+    this.error.set(null);
+
+    this.http.get<TVMazeShow[]>(`${this.config.apiBaseUrl}/shows`, {
+      params: { page: 0 }
+    }).subscribe({
+      next: (shows) => {
+        const movies = shows.map(show => this.convertTVMazeShow(show));
+        this.movies.set(movies);
+        this.isLoading.set(false);
+      },
+      error: () => {
+        this.error.set('Could not load movies from the API.');
+        this.isLoading.set(false);
+      }
+    });
+  }
+
 
 }
