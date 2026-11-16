@@ -45,6 +45,8 @@ To run unit tests, use:
 ng test
 ```
 
+An end-to-end testing framework must be configured separately.
+
 ## Running End-to-End Tests
 
 To run end-to-end tests, use:
@@ -132,3 +134,37 @@ Before lazy loading, the initial bundle size was 318.30 kB. After lazy loading, 
 This means Angular does not need to load all the pages when the application first opens.
 
 The landing page remains eagerly loaded because it is the first page users see when they open the application.
+
+## Lifecycle
+
+### Constructor Experiment
+
+I tried reading this.id() inside the constructor of the Movie Detail component.
+
+The Console displayed:
+
+[constructor] Movie ID: undefined
+
+This happened because Angular had not assigned the route-bound input when the constructor ran.
+
+I moved the movie lookup back to ngOnInit() because the movie ID was available when the component initialized.
+
+### ngOnInit()
+
+I used ngOnInit() to get the movie ID, look up the movie in the MovieService, and record the starting time using Date.now().
+
+The Console displayed:
+
+[lifecycle] opened: Under the Dome
+
+### ngOnDestroy()
+
+When I clicked Movie List to return to the homepage, ngOnDestroy() ran.
+
+The Console displayed:
+
+[lifecycle] closed: Under the Dome after 87 seconds
+
+This shows that Angular destroys the Movie Detail component when the user navigates away from that route.
+
+I used Date.now() and Math.round() to calculate how many seconds the movie detail page was open.
