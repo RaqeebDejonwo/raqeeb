@@ -158,7 +158,7 @@ export class MovieService {
       params: { page: 0 }
     }).subscribe({
       next: (shows) => {
-        const movies = shows.map(show => this.convertTVMazeShow(show));
+        const movies = shows.slice(0, 10).map(show => this.convertTVMazeShow(show));
         this.movies.set(movies);
         this.isLoading.set(false);
       },
