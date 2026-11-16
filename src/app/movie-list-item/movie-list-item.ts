@@ -1,6 +1,7 @@
 
 import { Component, input, output } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { TitleCasePipe, UpperCasePipe, DecimalPipe } from '@angular/common';
 import { Movie } from '../movie';
 
 export interface MovieEvent {
@@ -10,7 +11,7 @@ export interface MovieEvent {
 
 @Component({
   selector: 'app-movie-list-item',
-  imports: [RouterLink],
+  imports: [RouterLink, TitleCasePipe, UpperCasePipe, DecimalPipe],
   templateUrl: './movie-list-item.html',
   styleUrl: './movie-list-item.css',
 })

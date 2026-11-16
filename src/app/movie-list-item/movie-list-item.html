@@ -1,11 +1,10 @@
-
 <div class="movie-item">
   <img [src]="item().image" [alt]="item().title">
 
-  <h2>{{ item().title }}</h2>
+  <h2>{{ item().title | titlecase }}</h2>
 
   <p>Year: {{ item().year }}</p>
-  <p>Director: {{ item().directors }}</p>
+  <p>Director: {{ item().directors.join(', ') | uppercase }}</p>
   <p>Cast: {{ item().cast }}</p>
 
   @switch (item().genre) {
@@ -26,8 +25,8 @@
     }
   }
 
-  @if (item().rating) {
-    <p>Rating: {{ item().rating }}/10</p>
+  @if (item().rating != null) {
+    <p>Rating: {{ item().rating | number:'1.1-1' }}/10</p>
   } @else {
     <p>Rating is not available.</p>
   }
