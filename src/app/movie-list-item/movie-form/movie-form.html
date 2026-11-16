@@ -4,7 +4,7 @@
 <form [formGroup]="movieForm" (ngSubmit)="addMovie()">
 
   <label>Movie Title:</label>
-  <input type="text" formControlName="title">
+  <input #firstField type="text" formControlName="title">
 
   <br><br>
 

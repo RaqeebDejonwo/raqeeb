@@ -1,6 +1,20 @@
 
-import { Component, inject } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
+import {
+  Component,
+  inject,
+  afterNextRender,
+  viewChild,
+  ElementRef
+} from '@angular/core';
+
+import {
+  FormBuilder,
+  ReactiveFormsModule,
+  Validators,
+  AbstractControl,
+  ValidationErrors
+} from '@angular/forms';
+
 import { ActivatedRoute, Router } from '@angular/router';
 import { MovieService } from '../../services/movie';
 import { Movie } from '../../movie';
@@ -15,7 +29,6 @@ function movieTitleValidator(control: AbstractControl): ValidationErrors | null 
   return null;
 }
 
-
 function movieRatingValidator(control: AbstractControl): ValidationErrors | null {
   const rating = control.get('rating')?.value;
   const director = control.get('directors')?.value;
@@ -26,7 +39,6 @@ function movieRatingValidator(control: AbstractControl): ValidationErrors | null
 
   return null;
 }
-
 
 @Component({
   selector: 'app-movie-form',
@@ -40,6 +52,8 @@ export class MovieForm {
   private router = inject(Router);
   private route = inject(ActivatedRoute);
 
+  firstField = viewChild<ElementRef<HTMLInputElement>>('firstField');
+
   movieId = Number(this.route.snapshot.paramMap.get('id'));
   isEditMode = this.route.snapshot.routeConfig?.path === 'movies/:id/edit';
 
@@ -48,10 +62,8 @@ export class MovieForm {
     year: [2026, Validators.required],
     genre: ['', Validators.required],
     directors: ['', Validators.required],
-
     rating: [0, [Validators.required, Validators.min(0), Validators.max(10)]]
   }, { validators: movieRatingValidator });
-
 
   constructor() {
     if (this.isEditMode) {
@@ -67,6 +79,12 @@ export class MovieForm {
         });
       }
     }
+
+    // afterNextRender runs after Angular renders the input element.
+    // ngOnInit is too early to reliably focus this view element.
+    afterNextRender(() => {
+      this.firstField()?.nativeElement.focus();
+    });
   }
 
   addMovie() {
