@@ -55,7 +55,8 @@ export class MovieForm {
   firstField = viewChild<ElementRef<HTMLInputElement>>('firstField');
 
   movieId = Number(this.route.snapshot.paramMap.get('id'));
-  isEditMode = this.route.snapshot.routeConfig?.path === 'movies/:id/edit';
+
+  isEditMode = this.route.snapshot.routeConfig?.path === ':id/edit';
 
   movieForm = this.fb.group({
     title: ['', [Validators.required, movieTitleValidator]],
