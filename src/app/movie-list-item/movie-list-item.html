@@ -1,29 +1,14 @@
+
 <div class="movie-item">
   <img [src]="item().image" [alt]="item().title">
 
-  <h2>{{ item().title | titlecase }}</h2>
+  <h2>{{ item().title | titleShortener:20 | titlecase }}</h2>
 
   <p>Year: {{ item().year }}</p>
   <p>Director: {{ item().directors.join(', ') | uppercase }}</p>
   <p>Cast: {{ item().cast }}</p>
 
-  @switch (item().genre) {
-    @case ('Action') {
-      <p>Genre: Action Movie</p>
-    }
-    @case ('Comedy') {
-      <p>Genre: Comedy Movie</p>
-    }
-    @case ('Horror') {
-      <p>Genre: Horror Movie</p>
-    }
-    @case ('Drama') {
-      <p>Genre: Drama Movie</p>
-    }
-    @default {
-      <p>Genre: Other</p>
-    }
-  }
+  <p>Genre: {{ item().genre | genreLabel | uppercase }}</p>
 
   @if (item().rating != null) {
     <p>Rating: {{ item().rating | number:'1.1-1' }}/10</p>

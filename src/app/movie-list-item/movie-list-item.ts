@@ -4,6 +4,9 @@ import { RouterLink } from '@angular/router';
 import { TitleCasePipe, UpperCasePipe, DecimalPipe } from '@angular/common';
 import { Movie } from '../movie';
 
+import { TitleShortenerPipe } from '../pipes/title-shortener-pipe';
+import { GenreLabelPipe } from '../pipes/genre-label-pipe';
+
 export interface MovieEvent {
   id: number;
   action: 'opened' | 'favourited' | 'delete';
@@ -11,7 +14,14 @@ export interface MovieEvent {
 
 @Component({
   selector: 'app-movie-list-item',
-  imports: [RouterLink, TitleCasePipe, UpperCasePipe, DecimalPipe],
+  imports: [
+    RouterLink,
+    TitleCasePipe,
+    UpperCasePipe,
+    DecimalPipe,
+    TitleShortenerPipe,
+    GenreLabelPipe
+  ],
   templateUrl: './movie-list-item.html',
   styleUrl: './movie-list-item.css',
 })
