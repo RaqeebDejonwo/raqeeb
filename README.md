@@ -97,3 +97,38 @@ These changes are stored only in the application's memory.
 Refreshing the page reloads the original movies from the API.
 
 No POST, PUT, PATCH, or DELETE requests are sent to TVMaze.
+
+## Lazy Loading
+
+### Before Lazy Loading
+
+| Initial Chunk | Raw Size | Transfer Size |
+|---|---|---|
+| main-RXA5DBEF.js | 318.30 kB | 84.82 kB |
+| Initial Total | 318.30 kB | 84.82 kB |
+
+### After Lazy Loading
+
+| Initial Chunk | Raw Size | Transfer Size |
+|---|---|---|
+| chunk-3ENJ57OK.js | 164.98 kB | 48.78 kB |
+| chunk-XU7XN5FF.js | 104.92 kB | 27.26 kB |
+| main-RDWC7VFF.js | 7.60 kB | 2.48 kB |
+| Initial Total | 277.50 kB | 78.52 kB |
+
+### Lazy Chunk Files
+
+| Chunk | Raw Size | Transfer Size |
+|---|---|---|
+| movie-form | 42.59 kB | 9.71 kB |
+| movie-detail | 995 bytes | 995 bytes |
+
+### Explanation
+
+I used loadComponent() to lazy load the movie detail, add movie, and edit movie pages.
+
+Before lazy loading, the initial bundle size was 318.30 kB. After lazy loading, it decreased to 277.50 kB.
+
+This means Angular does not need to load all the pages when the application first opens.
+
+The landing page remains eagerly loaded because it is the first page users see when they open the application.
