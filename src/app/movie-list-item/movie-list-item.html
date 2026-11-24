@@ -28,7 +28,9 @@
 
   <br>
 
-  <button type="button" (click)="deleteMovie()">
+  <button type="button"
+          appConfirm="Are you sure you want to delete this movie?"
+          (confirmed)="deleteMovie()">
     Delete Movie
   </button>
 </div>

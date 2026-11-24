@@ -6,6 +6,7 @@ import { Movie } from '../movie';
 
 import { TitleShortenerPipe } from '../pipes/title-shortener-pipe';
 import { GenreLabelPipe } from '../pipes/genre-label-pipe';
+import { Confirm } from '../directives/confirm';
 
 export interface MovieEvent {
   id: number;
@@ -20,7 +21,8 @@ export interface MovieEvent {
     UpperCasePipe,
     DecimalPipe,
     TitleShortenerPipe,
-    GenreLabelPipe
+    GenreLabelPipe,
+    Confirm
   ],
   templateUrl: './movie-list-item.html',
   styleUrl: './movie-list-item.css',
