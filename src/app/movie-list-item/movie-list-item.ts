@@ -1,4 +1,3 @@
-
 import { Component, input, output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TitleCasePipe, UpperCasePipe, DecimalPipe } from '@angular/common';
@@ -7,6 +6,7 @@ import { Movie } from '../movie';
 import { TitleShortenerPipe } from '../pipes/title-shortener-pipe';
 import { GenreLabelPipe } from '../pipes/genre-label-pipe';
 import { Confirm } from '../directives/confirm';
+import { Highlight } from '../directives/highlight';
 
 export interface MovieEvent {
   id: number;
@@ -15,6 +15,12 @@ export interface MovieEvent {
 
 @Component({
   selector: 'app-movie-list-item',
+  hostDirectives: [
+    {
+      directive: Highlight,
+      inputs: ['appHighlight: highlightColor']
+    }
+  ],
   imports: [
     RouterLink,
     TitleCasePipe,

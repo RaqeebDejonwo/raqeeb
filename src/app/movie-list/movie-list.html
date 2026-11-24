@@ -59,7 +59,7 @@
 
 @for (movie of filteredMovies(); track movie.id) {
   <app-movie-list-item
-    appHighlight="lightgreen"
+    highlightColor="lightgreen"
     [item]="movie"
     (movieEvent)="handleMovieEvent($event)">
   </app-movie-list-item>
