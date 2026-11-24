@@ -168,3 +168,10 @@ The Console displayed:
 This shows that Angular destroys the Movie Detail component when the user navigates away from that route.
 
 I used Date.now() and Math.round() to calculate how many seconds the movie detail page was open.
+## localStorage
+
+I used localStorage to store saved movie IDs and the user's search term so they remain available after refreshing the browser.
+
+The movie data from the API is not stored because it is fetched again when the application loads.
+
+Passwords should never be stored in localStorage.

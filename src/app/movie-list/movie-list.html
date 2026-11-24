@@ -1,3 +1,4 @@
+
 <h1>Movie List</h1>
 
 <a routerLink="/movies/add">
@@ -13,6 +14,20 @@
 }
 
 <p>{{ movieSummary() }}</p>
+
+<h2>Saved Movies</h2>
+
+<ul>
+  @for (movie of savedMovies(); track movie.id) {
+    <li>
+      <a [routerLink]="['/movies', movie.id]">
+        {{ movie.title }}
+      </a>
+    </li>
+  } @empty {
+    <li>No saved movies yet.</li>
+  }
+</ul>
 
 <h2>Action Movies</h2>
 
@@ -32,7 +47,17 @@
 
 <h2>All Movies</h2>
 
-@for (movie of movies(); track movie.id) {
+<label for="search">Search Movies: </label>
+
+<input
+  id="search"
+  type="text"
+  #search
+  placeholder="Enter movie title"
+  [value]="searchTerm()"
+  (input)="searchTerm.set(search.value)">
+
+@for (movie of filteredMovies(); track movie.id) {
   <app-movie-list-item
     appHighlight="lightgreen"
     [item]="movie"

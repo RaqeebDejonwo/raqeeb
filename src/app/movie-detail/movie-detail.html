@@ -1,4 +1,3 @@
-
 @if (movie(); as selectedMovie) {
   <h1 appHighlight="lightgreen">{{ selectedMovie.title }}</h1>
 
@@ -11,6 +10,17 @@
   <img [src]="selectedMovie.image"
        [alt]="selectedMovie.title"
        width="200">
+
+  <br>
+
+  <button type="button" (click)="toggleSaved(selectedMovie.id)">
+    @if (isSaved(selectedMovie.id)) {
+      Unsave Movie
+    } @else {
+      Save Movie
+    }
+  </button>
+
 } @else {
   <p>Movie not found.</p>
 }

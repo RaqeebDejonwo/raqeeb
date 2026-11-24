@@ -1,3 +1,4 @@
+
 import {
   Component,
   input,
@@ -9,6 +10,7 @@ import {
 
 import { MovieService } from '../services/movie';
 import { Highlight } from '../directives/highlight';
+import { Saved } from '../services/saved';
 
 @Component({
   selector: 'app-movie-detail',
@@ -20,6 +22,7 @@ export class MovieDetail implements OnInit, OnDestroy {
   id = input<string>();
 
   movieService = inject(MovieService);
+  savedService = inject(Saved);
 
   movie = computed(() =>
     this.movieService.getMovieById(Number(this.id()))
@@ -27,6 +30,14 @@ export class MovieDetail implements OnInit, OnDestroy {
 
   startTime = 0;
   movieName = '';
+
+  toggleSaved(id: number) {
+    this.savedService.toggle(id);
+  }
+
+  isSaved(id: number): boolean {
+    return this.savedService.isSaved(id);
+  }
 
   ngOnInit() {
     const movie = this.movieService.getMovieById(Number(this.id()));
