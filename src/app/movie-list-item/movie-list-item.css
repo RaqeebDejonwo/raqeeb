@@ -1,8 +1,13 @@
+:host {
+  display: block;
+}
+
 .movie-item {
   border: 2px solid black;
   padding: 15px;
   margin-bottom: 10px;
 }
+
 img {
   width: 180px;
   height: 260px;

@@ -8,10 +8,11 @@ import {
 } from '@angular/core';
 
 import { MovieService } from '../services/movie';
+import { Highlight } from '../directives/highlight';
 
 @Component({
   selector: 'app-movie-detail',
-  imports: [],
+  imports: [Highlight],
   templateUrl: './movie-detail.html',
   styleUrl: './movie-detail.css'
 })

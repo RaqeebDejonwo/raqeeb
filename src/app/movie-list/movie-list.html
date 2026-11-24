@@ -1,6 +1,5 @@
 <h1>Movie List</h1>
 
-
 <a routerLink="/movies/add">
   <button type="button">Add Movie</button>
 </a>
@@ -19,7 +18,7 @@
 
 <ul>
   @for (movie of actionMovies(); track movie.id) {
-    <li>{{ movie.title }}</li>
+    <li appHighlight>{{ movie.title }}</li>
   }
 </ul>
 
@@ -35,6 +34,7 @@
 
 @for (movie of movies(); track movie.id) {
   <app-movie-list-item
+    appHighlight="lightgreen"
     [item]="movie"
     (movieEvent)="handleMovieEvent($event)">
   </app-movie-list-item>

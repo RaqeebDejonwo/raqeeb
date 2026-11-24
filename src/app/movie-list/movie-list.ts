@@ -1,4 +1,3 @@
-
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import {
@@ -6,10 +5,11 @@ import {
   MovieListItem
 } from '../movie-list-item/movie-list-item';
 import { MovieService } from '../services/movie';
+import { Highlight } from '../directives/highlight';
 
 @Component({
   selector: 'app-movie-list',
-  imports: [MovieListItem, RouterLink],
+  imports: [MovieListItem, RouterLink, Highlight],
   templateUrl: './movie-list.html',
   styleUrl: './movie-list.css',
 })
